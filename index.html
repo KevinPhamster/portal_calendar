@@ -20,7 +20,7 @@
 </head>
 
 <body class="blackBackground">
-  <table class="table table-bordered" cellspacing="0" style="width:100%">
+  <!-- <table class="table table-bordered" cellspacing="0" style="width:100%">
     <tr class="captionHeadingRow">
       <caption class="titleHeading">January<caption/>
     </tr>
@@ -33,8 +33,16 @@
       <th>Thur</th>
       <th>Fri</th>
       <th>Sat</th>
-    </tr>
-    <tr>
+    </tr> -->
+    <div class="captionHeadingRow centerElements">
+      <button id="previousDateButton" class="w3-btn-floating"><</button>
+      <h2 id="captionText" class="titleHeading textFont">
+      </h2>
+      <button id="nextDateButton" class="w3-btn-floating">></button>
+    </div>
+    <div id="calendarContent">
+    </div>
+    <!-- <tr>
       <td><button onClick="goToWeekly()">Week 1</button></td>
       <td onClick="openDrawer()">1</td>
       <td>2</td>
@@ -53,7 +61,7 @@
       <td>12</td>
       <td>13</td>
       <td>14</td>
-    </tr>
+    </tr> -->
   </table>
   <button id="addEventButton" class="w3-btn-floating" data-toggle="modal" data-target="#myModal">+</button>
   <!-- <button id="addEventButton" class="w3-btn-floating" onClick="goToAddEventPage()">+</button> -->

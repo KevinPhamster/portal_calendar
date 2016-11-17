@@ -17,17 +17,23 @@ td {
   color: #a6a6a6;
 }
 
-caption {
+#captionText {
   font-size: 30px;
   background-color: #a82f40;
+  margin: 0;
+  padding: 15px;
+  display: inline-block;
 }
 
 tr.tableHeadingsRow {
   background-color: #d0475b;
 }
 
-tr.captionHeadingRow {
+div.captionHeadingRow {
   background-color: #a82f40;
+  color: #ffffff;
+  display: inline-block;
+  width: 100%;
 }
 
 th {
@@ -49,7 +55,7 @@ th {
 
 .titleHeading {
   text-align: center;
-  width: 100%;
+  /*width: 100%;*/
   color: #ffffff;
   text-align: center;
 }
@@ -67,13 +73,26 @@ th#dailyHeading {
 }
 
 button#addEventButton {
-  background-color: #0000ff;
+  background-color: #a82f40;
   color: #ffffff;
   border: none;
-  /*float: right;*/
   position: absolute;
   bottom: 10px;
   right: 10px;
+}
+
+button#previousDateButton {
+  background-color: #d0475b;
+  color: #ffffff;
+  border: none;
+  margin-right: 100px;
+}
+
+button#nextDateButton {
+  background-color: #d0475b;
+  color: #ffffff;
+  border: none;
+  margin-left: 100px;
 }
 
 button#backButton {
