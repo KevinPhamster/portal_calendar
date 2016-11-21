@@ -57,25 +57,68 @@ addEventModal.onclick = function() {
 }
 
 var calendarTemplate = '';
+var nowDate = new Date();
+var nowMonth = nowDate.getMonth();
+var nowDateNumber = nowDate.getDate();
+var nowDay = nowDate.getDay();
+var nowYear = nowDate.getFullYear();
 var currentDate = new Date();
 var currentMonth = currentDate.getMonth();
 var currentDateNumber = currentDate.getDate();
 var currentDay = currentDate.getDay();
 var currentYear = currentDate.getFullYear();
 var monthNamesArray = new Array();
-monthNamesArray[0] = "January";
-monthNamesArray[1] = "February";
-monthNamesArray[2] = "March";
-monthNamesArray[3] = "April";
-monthNamesArray[4] = "May";
-monthNamesArray[5] = "June";
-monthNamesArray[6] = "July";
-monthNamesArray[7] = "August";
-monthNamesArray[8] = "September";
-monthNamesArray[9] = "October";
-monthNamesArray[10] = "November";
-monthNamesArray[11] = "December";
+
+var decrementMonth = function (month, isDecrementingCurrentMonth) {
+  if(month == 0){
+    month = 11;
+    currentYear--;
+    console.log("Decrement Year");
+  }
+  else{
+    month--;
+  }
+  return month;
+}
+
+var incrementMonth = function (month, isIncrementingCurrentMonth) {
+  if(month == 11){
+    month = 0;
+    currentYear++;
+  }
+  else{
+    month++;
+  }
+  return month;
+}
+
+monthNamesArray[0] = 'January';
+monthNamesArray[1] = 'February';
+monthNamesArray[2] = 'March';
+monthNamesArray[3] = 'April';
+monthNamesArray[4] = 'May';
+monthNamesArray[5] = 'June';
+monthNamesArray[6] = 'July';
+monthNamesArray[7] = 'August';
+monthNamesArray[8] = 'September';
+monthNamesArray[9] = 'October';
+monthNamesArray[10] = 'November';
+monthNamesArray[11] = 'December';
 document.getElementById('captionText').textContent = monthNamesArray[currentMonth] + ' ' + currentYear;
+
+var switchToPreviousMonth = function () {
+  calendarTemplate = '';
+  currentMonth = decrementMonth(currentMonth);
+  generateMonthlyCalendar(currentMonth, currentYear)
+  document.getElementById('captionText').textContent = monthNamesArray[currentMonth] + ' ' + currentYear;
+}
+
+var switchToNextMonth = function () {
+  calendarTemplate = '';
+  currentMonth = incrementMonth(currentMonth);
+  generateMonthlyCalendar(currentMonth, currentYear);
+  document.getElementById('captionText').textContent = monthNamesArray[currentMonth] + ' ' + currentYear;
+}
 
 var generateMonthlyCalendar = function(month, year){
   calendarTemplate = calendarTemplate + '<table class="table table-bordered" cellspacing="0" style="width:100%">';
@@ -95,16 +138,18 @@ var generateMonthlyCalendar = function(month, year){
   calendarTemplate = calendarTemplate + '<td>'+ dateNumIndex +'</td>';
   dayIndex++;
   for(dateNumIndex = 2; monthIndex == month; dateNumIndex++){
-    calendarTemplate = calendarTemplate + '<td>'+ dateNumIndex +'</td>';
-    dateObjectIndex = new Date(year, month, dateNumIndex)
+    dateObjectIndex = new Date(year, month, dateNumIndex);
     monthIndex = dateObjectIndex.getMonth();
-    if(dayIndex < 6){
-      dayIndex++;
-    }
-    else{
-      weekIndex++;
-      calendarTemplate = calendarTemplate + '</tr><tr><td><button onClick="goToWeekly()">Week '+weekIndex+'</button></td>';
-      dayIndex = 0;
+    if(monthIndex == month){
+      calendarTemplate = calendarTemplate + '<td>'+ dateNumIndex +'</td>';
+      if(dayIndex < 6){
+        dayIndex++;
+      }
+      else{
+        weekIndex++;
+        calendarTemplate = calendarTemplate + '</tr><tr><td><button onClick="goToWeekly()">Week '+weekIndex+'</button></td>';
+        dayIndex = 0;
+      }
     }
   }
   for(; dayIndex <= 6; dayIndex++){
