@@ -1,4 +1,4 @@
-.blackBackground {
+.redBackground {
   background-color: #d0475b;
 }
 
@@ -23,6 +23,7 @@ td {
   margin: 0;
   padding: 15px;
   display: inline-block;
+  width: 150px;
 }
 
 tr.tableHeadingsRow {
@@ -76,7 +77,7 @@ button#addEventButton {
   background-color: #a82f40;
   color: #ffffff;
   border: none;
-  position: absolute;
+  position: fixed;
   bottom: 10px;
   right: 10px;
 }

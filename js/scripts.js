@@ -1,14 +1,3 @@
-// require("jsdom").env("", function(err, window) {
-//     if (err) {
-//         console.error(err);
-//         return;
-//     }
-//
-//     global.$ = require("jquery")(window);
-// });
-//
-// require('bootstrap');
-
 var goToWeekly = function(){
   window.location.href = './templates/weekly.html'
 }
@@ -73,7 +62,6 @@ var decrementMonth = function (month, isDecrementingCurrentMonth) {
   if(month == 0){
     month = 11;
     currentYear--;
-    console.log("Decrement Year");
   }
   else{
     month--;
@@ -133,15 +121,14 @@ var generateMonthlyCalendar = function(month, year){
   for(blankDayIndex = 0; blankDayIndex < dayIndex; blankDayIndex++){
     calendarTemplate = calendarTemplate + '<td></td>';
   }
+
   var monthIndex = month;
   var dateNumIndex = 1;
-  calendarTemplate = calendarTemplate + '<td>'+ dateNumIndex +'</td>';
-  dayIndex++;
-  for(dateNumIndex = 2; monthIndex == month; dateNumIndex++){
+  for(dateNumIndex = 1; monthIndex == month; dateNumIndex++){
     dateObjectIndex = new Date(year, month, dateNumIndex);
     monthIndex = dateObjectIndex.getMonth();
     if(monthIndex == month){
-      calendarTemplate = calendarTemplate + '<td>'+ dateNumIndex +'</td>';
+      calendarTemplate = calendarTemplate + '<td onClick="openDrawer()">'+ dateNumIndex +'</td>';
       if(dayIndex < 6){
         dayIndex++;
       }
@@ -159,8 +146,3 @@ var generateMonthlyCalendar = function(month, year){
   document.getElementById('calendarContent').innerHTML = calendarTemplate;
 }
 generateMonthlyCalendar(currentMonth, currentYear);
-// window.onclick = function(event) {
-//     if (event.target == modal) {
-//         modal.style.display = "none";
-//     }
-// }
