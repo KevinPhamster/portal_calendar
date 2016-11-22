@@ -27,23 +27,21 @@ drawerClose.onclick = function() {
 
 var addEventModal = document.getElementById('myModal');
 var addEventButton = document.getElementById('addEventButton');
-var closeButtons = document.getElementsByClassName('close')[0];
-var modalClose = document.getElementById('modalClose');
 
 addEventButton.onclick = function() {
   addEventModal.style.display = 'block';
 }
 
-modalClose.onclick = function() {
-  addEventModal.style.display = 'none';
-}
-
 addEventModal.onclick = function() {
-  if(!$(event.target).is('.modal-content'))
+  if(!$(event.target).is('.modalElement'))
   {
     addEventModal.style.display = 'none';
   }
 }
+
+$( function() {
+    $( "#datepicker" ).datepicker();
+  } );
 
 var calendarTemplate = '';
 var nowDate = new Date();
@@ -58,7 +56,7 @@ var currentDay = currentDate.getDay();
 var currentYear = currentDate.getFullYear();
 var monthNamesArray = new Array();
 
-var decrementMonth = function (month, isDecrementingCurrentMonth) {
+var decrementMonth = function (month) {
   if(month == 0){
     month = 11;
     currentYear--;
@@ -69,7 +67,7 @@ var decrementMonth = function (month, isDecrementingCurrentMonth) {
   return month;
 }
 
-var incrementMonth = function (month, isIncrementingCurrentMonth) {
+var incrementMonth = function (month) {
   if(month == 11){
     month = 0;
     currentYear++;

@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
   <link rel="stylesheet" href="css/styles.css?v=1.0">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -16,7 +17,7 @@
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
 <body class="redBackground">
@@ -33,39 +34,38 @@
   <button id="dailyButton" onClick="goToDaily()">Daily View</button>
 
   <div id="myModal" class="modal">
-    <div class="modal-content">
-      <span class="close" id="modalClose">×</span>
-      <div class="textFont">
-        <div class="pageHeading">Add Event</div>
-        <h5 class="titleHeading">Title</h5>
-        <div class="centerElements">
-          <div class="inlineElements">12:35 P.M.</div>
-          <div class="inlineElements">January 1st, 2016</div>
+    <div class="modalContent modalElement">
+      <div class="textFont modalElement">
+        <div class="pageHeading modalElement">Add Event</div>
+        <h5 class="titleHeading modalElement">Title</h5>
+        <div class="centerElements modalElement">
+          <p class="modalElement inlineElements">Time: <input type="time" class="modalElement"></input></p>
+          <p class="modalElement inlineElements">Date: <input class="modalElement" type="text" id="datepicker"></p>
         </div>
 
-        <div>
-          <p>Repeat</p>
-          <div class="radio inlineElements">
-            <label>
-              <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+        <div class="modalElement">
+          <p class="modalElement">Repeat</p>
+          <div class="radio inlineElements modalElement">
+            <label class="modalElement">
+              <input type="radio"  class="modalElement" name="optionsRadios" id="optionsRadios1" value="option1" checked>
               None
             </label>
           </div>
-          <div class="radio inlineElements">
-            <label>
-              <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+          <div class="radio inlineElements modalElement">
+            <label class="modalElement">
+              <input type="radio"  class="modalElement" name="optionsRadios" id="optionsRadios2" value="option2">
               Daily
             </label>
           </div>
-          <div class="radio inlineElements">
-            <label>
-              <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+          <div class="radio inlineElements modalElement">
+            <label class="modalElement">
+              <input type="radio"  class="modalElement" name="optionsRadios" id="optionsRadios3" value="option3">
               Weekly
             </label>
           </div>
-          <div class="radio inlineElements">
-            <label>
-              <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4">
+          <div class="radio inlineElements modalElement">
+            <label  class="modalElement">
+              <input type="radio"  class="modalElement" name="optionsRadios" id="optionsRadios4" value="option4">
               Monthly
             </label>
           </div>

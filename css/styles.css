@@ -65,7 +65,7 @@ th {
   text-align: center;
 }
 
-div.inlineElements {
+div.inlineElements, p.inlineElements{
   display: inline-block;
 }
 
@@ -132,7 +132,7 @@ div#eventDetailDrawer {
 }
 
 /* Modal Content */
-.modal-content {
+.modalContent {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
