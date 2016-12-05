@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <div id="myModal" class="modal">
+    <div class="modalContent modalElement">
+      <div class="textFont modalElement">
+        <div class="pageHeading modalElement">Add Event</div>
+        <h5 class="titleHeading modalElement">Title</h5>
+        <div class="centerElements modalElement">
+          <p class="modalElement inlineElements">Time: <input type="time" class="modalElement"></input></p>
+          <p class="modalElement inlineElements">Date: <input class="modalElement" type="text" id="datepicker"></p>
+        </div>
+
+        <div class="modalElement">
+          <p class="modalElement">Repeat</p>
+          <div class="radio inlineElements modalElement">
+            <label class="modalElement">
+              <input type="radio"  class="modalElement" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+              None
+            </label>
+          </div>
+          <div class="radio inlineElements modalElement">
+            <label class="modalElement">
+              <input type="radio"  class="modalElement" name="optionsRadios" id="optionsRadios2" value="option2">
+              Daily
+            </label>
+          </div>
+          <div class="radio inlineElements modalElement">
+            <label class="modalElement">
+              <input type="radio"  class="modalElement" name="optionsRadios" id="optionsRadios3" value="option3">
+              Weekly
+            </label>
+          </div>
+          <div class="radio inlineElements modalElement">
+            <label  class="modalElement">
+              <input type="radio"  class="modalElement" name="optionsRadios" id="optionsRadios4" value="option4">
+              Monthly
+            </label>
+          </div>
+        </div>
+        <button onClick="addEvent()">Add Event</button>
+      </div>
+    </div>
+  </div>
+</html>

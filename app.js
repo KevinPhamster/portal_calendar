@@ -14,6 +14,24 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.get('/', function(req, res){
+  var nowDate = new Date();
+  var nowMonth = nowDate.getMonth();
+  var nowYear = nowDate.getFullYear();
+  var dateObjectIndex = new Date(nowYear, nowMonth, 1);
+  var dayIndex = dateObjectIndex.getDay();
+  var weekIndex = 1;
+
+  res.render('index', {
+    title: "Portal Calendar",
+    dateObjectIndex: dateObjectIndex,
+    monthIndex: nowMonth,
+    month: nowMonth,
+    year: nowYear,
+    dayIndex: dayIndex,
+    weekIndex: weekIndex
+  });
+});
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

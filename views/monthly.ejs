@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <div>
+    <table class="table table-bordered" cellspacing="0" style="width:100%">
+      <tr class="tableHeadingsRow"><th class="col-md-1"></th>
+        <th>Sun</th><th>Mon</th><th>Tues</th><th>Wed</th><th>Thur</th><th>Fri</th><th>Sat</th>
+      </tr>
+      <tr>
+        <td><button onClick="goToWeekly()">Week 1</button></td>
+        <% for(var blankDayIndex=0; blankDayIndex < dateObjectIndex.getDay(); blankDayIndex++) {%>
+          <td></td>
+        <% } %>
+        <% for(var dateNumIndex=1; monthIndex == month; dateNumIndex++) {
+          dateObjectIndex = new Date(year, month, dateNumIndex);
+          monthIndex = dateObjectIndex.getMonth();
+          if(monthIndex == month){
+            %><td onClick="openDrawer()"><%= dateNumIndex %></td>
+            <% if(dayIndex < 6){
+              dayIndex++;
+            }
+            else{
+              weekIndex++;
+              %></tr><tr><td><button onClick="goToWeekly()">Week <%= weekIndex %></button></td><%
+              dayIndex = 0;
+            }
+          }
+          console.log('monthIndex', monthIndex);
+          console.log('month', month);
+        }
+        for(; dayIndex <= 6; dayIndex++){
+          %><td></td><%
+        }
+        %></tr>
+  </div>
+</html>

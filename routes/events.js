@@ -1,17 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-
-var eventSchema = new Schema({
-  title: String,
-  startDate: Date,
-  endDate: Date,
-  desc: String
-});
-
-var eventModel = mongoose.model('event', eventSchema);
+var eventModel = require('../models/eventModel');
 
 router.get('/', function(req, res, next) {
   eventModel.find({}, function(err, events) {
@@ -26,13 +15,21 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res) {
   var newEvent = new eventModel(req.body);
-  newEvent.save(function(err,event){
-    if(err){
-      res.send(err);
-    } else {
-      res.json(event);
+  newEvent.hasConflicts().then(function(hasConflicts){
+    console.log(hasConflicts);
+    if(!hasConflicts){
+      newEvent.save(function (err, event) {
+        if(err) {
+          console.log(err);
+          res.send(err);
+        } else {
+          console.log(event);
+          res.json(event);
+        }
+      })
     }
-  })
+  });
+  res.end();
 });
 
 router.patch('/:eventId', function(req, res) {
@@ -40,6 +37,19 @@ router.patch('/:eventId', function(req, res) {
     if(err){
       res.send(err);
     } else {
+      if(eventModel.find(
+        {
+          $or: [
+                {
+                  startDate: {$gte: req.body.startDate.getTime(), $lt: req.body.endDate.getTime()}
+                },
+                {
+                  startDate: {$lt: req.body.startDate.getTime()},
+                  endDate: {$gt: req.body.startDate.getTime(), $lt: req.body.endDate.getTime()}
+                }
+               ]
+        }
+      ))
       res.json(req.body);
     }
   })
